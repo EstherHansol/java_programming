@@ -1,0 +1,52 @@
+package java_programming.java_programming;
+abstract class AbstractShape {
+    public abstract double getArea();
+    public abstract double getPerimeter();
+}
+class ARectangle extends AbstractShape {
+    private double width;
+    private double height;
+
+    ARectangle(double w, double h) {
+        width = w;
+        height = h;
+    }
+
+    public double getArea() {
+        return width * height;
+    }
+
+    public double getPerimeter() {
+        return 2 * (width + height);
+    }
+}
+
+ class ACircle extends AbstractShape {
+    private double radius;
+
+    ACircle(double r){
+        radius = r;
+    }
+    public double getArea() { return Math.PI * radius *radius;}
+    public double getPerimeter() { return 2* Math.PI * radius;}
+}
+
+public class homework7 {
+
+    public static void main(String[] args) {
+           ARectangle r = new ARectangle (20.0, 10.0);
+            ACircle c = new ACircle(10);
+            System.out.printf("사각형의 면적: %2f\n", r.getArea());
+            System.out.printf("사각형의 둘레: %.2f\n", r.getPerimeter());
+            System.out.printf("원의 면적: %.2f\n", c.getArea());
+            System.out.printf("원의 둘레: %.2f\n", c.getPerimeter());
+
+        AbstractShape[] shapes = new AbstractShape[2];//자바는 항상 new로
+        shapes[0] = new ARectangle(100, 50);
+        shapes[1] = new ACircle(50);
+        for (AbstractShape shape : shapes) {
+            System.out.printf("%s area: %.2f\n",
+                    shape.getClass(), shape.getArea());
+        }
+    }
+}
